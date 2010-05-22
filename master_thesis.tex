@@ -1,0 +1,170 @@
+\documentclass[fontsize=12pt,parskip=full,normalheadings,a4paper]{scrartcl}
+%\documentclass[fontsize=12pt,parindent,normalheadings,a4paper]{scrartcl}
+% determine dimensions of the document
+\usepackage[a4paper,inner=40mm,outer=20mm,top=30mm,bottom=30mm]{geometry} 
+\usepackage[ansinew]{inputenc}  % char encoding ansi
+\usepackage{mathpazo}           % font-style
+\usepackage{graphicx}           % figures
+\usepackage[square]{natbib}     % for references
+\usepackage{csquotes}           % quotes
+\usepackage{verbatim}           % comment-environment
+\linespread{1.10}               % line distance
+\DeclareGraphicsRule{.pdftex}{pdf}{.pdftex}{}     % for xfig
+
+\newcommand{\theme}{Implementing a security-typed variant of Scala}
+
+
+% math things
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% styling the header and footer
+\usepackage[headsepline]{scrpage2}			    % separation line in the header
+\clearscrheadfoot
+\automark[subsection]{section}      
+\lehead[]{\leftmark}
+\lohead[]{\rightmark}
+\rehead{\pagemark}
+\rohead{\pagemark}
+\pagestyle{scrheadings}
+
+% color things
+\usepackage{color}              % color-package so that you can define your own colors
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{.5,0,0}
+\definecolor{darkblue}{rgb}{0,0,.5}
+\usepackage[plainpages=false,pdfpagelabels,colorlinks=true,urlcolor=darkblue,pagecolor=darkred,
+citecolor=black,linkcolor=black]{hyperref}
+
+% meta infos for pdf
+\hypersetup{
+	bookmarksopen     = true,
+	bookmarksnumbered = true,
+	pdfauthor         = {Matthias Günther <matthias.guenther@wikimatze.de>},
+	pdftitle          = {Master Thesis},
+	pdfsubject        = {\theme},
+	pdfkeywords       = {Scala, types, safety, software, computer science},
+}
+
+\usepackage{tabularx} % tables
+
+
+% settings for caption
+\usepackage[font=footnotesize,labelfont=bf,textfont=it,singlelinecheck=false,format=hang]{caption}
+
+
+\usepackage{listings}   % codeformation
+ \lstdefinelanguage{scala}{
+  morekeywords={struct,%
+    do,def, else,extends,false,final,finally,%
+    for,if,implicit,import,match,mixin,%
+    new,null,object,override,package,%
+    private,protected,requires,return,sealed,%
+    super,this,throw,trait,true,try,%
+    type,val,var,while,with,yield},
+  otherkeywords={=>,<-,<\%,<:,>:,\#,@},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[n]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[b]"""
+}
+
+
+\definecolor{gray_comments}{rgb}{0.5,0.5,0.5}
+\definecolor{green_strings}{rgb}{0.35,0.69,0.35}
+\definecolor{blue_keywords}{rgb}{0,0,0.67}
+% Default settings for code listings
+\lstset{frame=tb,
+  basicstyle=\footnotesize\ttfamily,
+  language=scala,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  numberstyle=\tiny\color{gray_comments},
+  numbers=left,
+  stepnumber=5,
+  keywordstyle=\color{blue_keywords},
+  commentstyle=\color{gray_comments},
+  stringstyle=\color{green_strings},
+  breaklines=true, 
+  breakatwhitespace=true,
+  showspaces=false,
+  showtabs=false,  
+  tabsize=3
+}
+
+%\DeclareCaptionFont{white}{\color{white}}
+%\DeclareCaptionFormat{listing}{\colorbox{gray_comments}{\parbox{\textwidth}{#1#2#3}}}
+%\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+% counter hack for setting the counter for the listings
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+%\counterwithin{lstlisting}{section}
+\begin{document}
+%\renewcommand{\listfigurename}{\sffamily Abbildungsverzeichnis}
+%\renewcommand{\listtablename}{\sffamily Tabellenverzeichnis}
+
+
+\begin{titlepage}
+ \begin{center}
+  \vfill
+  \begin{figure}[h]
+	\begin{center}
+ 		\includegraphics[scale=0.6]{images/hanfried.png}
+	\end{center}
+  \end{figure}
+  \vfill
+  \Huge{\theme} \\[0.5em]
+  \vfill
+  \Large{\textsc{Master Thesis}} \\
+  \vfill
+  \large{to optain the academic degree \\master degree in computer science} \\
+  \vfill
+  \Large{\textsc{Friedrich-Schiller-Universität Jena} \\Faculty of mathematics and computer science} \\
+  \vfill
+  \normalsize{submitted by Matthias Günther\\born 02.09.1985 in Dessau}\\ 
+\begin{center}\parbox{0cm}{\begin{tabbing}
+person in charge: \= Prof. Dr. Wilhelm R. Rossak \\
+advisor: 	\> Assistent Professor Jeffery von Ronne \\
+\> PD Dr. habil. Wolfram Amme \\
+\> Andreas Gampe \\
+\end{tabbing}}\end{center}
+  \vfill
+  \normalsize{Jena, \today}
+ \end{center}
+\end{titlepage}
+
+
+\thispagestyle{plain}
+\include{part_abstract}
+
+
+\tableofcontents
+
+\include{sec_preface}
+\include{sec_scala}
+\include{uncited}
+\include{memorandum_of_lists}
+\include{appendix}
+
+\begingroup
+\newpage
+\thispagestyle{plain}
+\section*{Independance declaration}
+
+I declare that I have made this work independently, and olny using the specified
+sources and utilities.
+
+
+\vspace{4\baselineskip}
+
+
+Jena, \today
+\endgroup
+\end{document}
