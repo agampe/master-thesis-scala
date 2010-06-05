@@ -1,0 +1,10 @@
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.log
+papers/*
+hints_for_writing/*
+images/*
+vorlage_freaky/*
