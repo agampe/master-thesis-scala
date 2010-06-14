@@ -1,0 +1,40 @@
+\definecolor{gray_comments}{rgb}{0.5,0.5,0.5}
+\definecolor{green_strings}{rgb}{0.35,0.69,0.35}
+\definecolor{blue_keywords}{rgb}{0,0,0.67}
+\lstdefinelanguage{scala}{
+  morekeywords={struct,%
+    do,def, else,extends,false,final,finally,%
+    for,if,implicit,import,match,mixin,%
+    new,null,object,override,package,%
+    private,protected,requires,return,sealed,%
+    super,this,throw,trait,true,try,%
+    type,val,var,while,with,yield},
+  otherkeywords={=>,<-,<\%,<:,>:,\#,@},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[n]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[b]"""
+}
+
+\lstset{frame=tb,
+  basicstyle=\footnotesize\ttfamily,
+  language=scala,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  numberstyle=\tiny\color{gray_comments},
+  numbers=left,
+  stepnumber=5,
+  keywordstyle=\color{blue_keywords},
+  commentstyle=\color{gray_comments},
+  stringstyle=\color{green_strings},
+  breaklines=true, 
+  breakatwhitespace=true,
+  showspaces=false,
+  showtabs=false,  
+  tabsize=3
+}
+
